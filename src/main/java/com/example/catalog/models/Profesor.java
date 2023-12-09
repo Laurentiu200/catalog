@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
-@Table(name = "ELEV")
+@Table(name = "PROFESOR")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Elev {
+public class Profesor {
 
     @Id
     @Column(name = "ID")
@@ -22,9 +22,9 @@ public class Elev {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "nota")
-    private Integer nota;
+    @Column(name = "Materie")
+    private Integer materie;
 
-    @Column(name = "Nr.Elev")
-    private Integer Nr_elev;
+    @Column(name = "Nr.Elevi")
+    private String nr_elevi;
 }
