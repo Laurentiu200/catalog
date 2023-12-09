@@ -19,12 +19,15 @@ public class Elev {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "firstName")
+    private String firstName;
 
-    @Column(name = "nota")
-    private Integer nota;
+    @Column(name = "lastName")
+    private String lastName;
 
-    @Column(name = "Nr.Elev")
-    private Integer Nr_elev;
+    @Column(name="email")
+    private String email;
+
+    @Column(name="password")
+    private String password;
 }

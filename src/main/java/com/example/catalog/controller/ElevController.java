@@ -1,6 +1,8 @@
 package com.example.catalog.controller;
 
 import com.example.catalog.models.Elev;
+import com.example.catalog.models.User;
+import com.example.catalog.responses.LoginResponse;
 import com.example.catalog.serviceImpl.ManageStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +18,18 @@ public class ElevController {
     ManageStudentService manageStudentService;
 
     @PostMapping(path = "/addUser")
-    public void addElev(@RequestBody Elev elev)
+    public LoginResponse addElev(@RequestBody Elev elev)
     {
-        manageStudentService.saveStudent(elev);
+        LoginResponse response = manageStudentService.saveStudent(elev);
+        return response;
     }
+    @GetMapping(path = "/login")
+    public LoginResponse addElev(@RequestBody User user)
+    {
+        LoginResponse response = manageStudentService.login(user);
+        return response;
+    }
+
 
     @GetMapping(path = "/find")
     public Optional<Elev> findElev(@RequestParam Integer id)
