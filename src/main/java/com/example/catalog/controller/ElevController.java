@@ -23,7 +23,7 @@ public class ElevController {
         LoginResponse response = manageStudentService.saveStudent(elev);
         return response;
     }
-    @GetMapping(path = "/login")
+    @PostMapping(path = "/login")
     public LoginResponse addElev(@RequestBody User user)
     {
         LoginResponse response = manageStudentService.login(user);
