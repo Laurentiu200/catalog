@@ -27,4 +27,6 @@ public class Profesor {
 
     @Column(name = "Nr.Elevi")
     private String nr_elevi;
+
+
 }
