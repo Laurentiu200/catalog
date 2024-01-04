@@ -9,26 +9,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
-@Table(name = "PROFESOR")
+@Table(name = "Grade")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Profesor {
+public class Grade {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "firstName")
-    private String firstName;
+    @Column
+    private Integer grade;
 
-    @Column(name = "lastName")
-    private String lastName;
-
-    @Column(name="email")
-    private String email;
-
-    @Column(name="password")
-    private String password;
-
+    public Grade(Integer grade) {
+        this.grade = grade;
+    }
 }

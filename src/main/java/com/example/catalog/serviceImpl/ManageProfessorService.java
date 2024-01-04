@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface ManageProfessorService {
     void saveProfessor(Profesor profesor);
-    public Optional<Profesor> findProfesor(Integer id);
+    Optional<Profesor> findProfesor(Integer id);
 }

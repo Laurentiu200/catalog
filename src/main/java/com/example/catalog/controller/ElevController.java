@@ -1,6 +1,6 @@
 package com.example.catalog.controller;
 
-import com.example.catalog.models.Elev;
+import com.example.catalog.models.Student;
 import com.example.catalog.models.User;
 import com.example.catalog.responses.LoginResponse;
 import com.example.catalog.serviceImpl.ManageStudentService;
@@ -18,9 +18,9 @@ public class ElevController {
     ManageStudentService manageStudentService;
 
     @PostMapping(path = "/addUser")
-    public LoginResponse addElev(@RequestBody Elev elev)
+    public LoginResponse addElev(@RequestBody Student student)
     {
-        LoginResponse response = manageStudentService.saveStudent(elev);
+        LoginResponse response = manageStudentService.saveStudent(student);
         return response;
     }
     @PostMapping(path = "/login")
@@ -32,7 +32,7 @@ public class ElevController {
 
 
     @GetMapping(path = "/find")
-    public Optional<Elev> findElev(@RequestParam Integer id)
+    public Optional<Student> findElev(@RequestParam Integer id)
     {
         return manageStudentService.findElev(id);
     }

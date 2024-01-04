@@ -1,7 +1,7 @@
 const BASE_URL = 'http://localhost:8080'
 
 export const loginUser = async (userData) => {
-    return await fetch(`${BASE_URL}/elev/login`,
+    return await fetch(`${BASE_URL}/login`,
         {
             method: 'POST',
             headers: {
@@ -12,7 +12,7 @@ export const loginUser = async (userData) => {
 }
 
 export const registerUser = async (userData) =>{
-    const response = await fetch(`${BASE_URL}/elev/addUser`,
+    return await fetch(`${BASE_URL}/addStudent`,
         {
             method: 'POST',
             headers: {
@@ -20,13 +20,5 @@ export const registerUser = async (userData) =>{
             },
             body: JSON.stringify(userData),
         })
-        .then(response => {
-            if(!response.ok)
-            {
-                throw new Error(`HTTP error ${response.status}`)
-            }
-            return response.json();
-        })
-        .then( data => console.log(data))
-        .catch(error => { console.error('Error:', error)})
+
 }

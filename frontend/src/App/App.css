@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(65deg, #43658a, #7ab8ce 48%, #ebf6ff);
+
 }
 
 .App-logo {
@@ -35,4 +40,60 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.auth-form, .login-form, .register-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen  and (min-width: 1000px){
+  .auth-form {
+    padding: 5rem;
+    border-radius: 10px;
+    margin: 0.5rem;
+  }
+}
+
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+  font-size: medium;
+  color: white;
+}
+
+.auth-form.input, .login-form.input, .register-form.input {
+  margin: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.link-btn {
+  background: none;
+  color: white;
+  text-decoration: underline;
+
+}
+
+
+body {
+  font-size: 14px; /* Default font size for small screens */
+
+  @media (min-width: 768px) {
+    font-size: 16px; /* Increase font size for larger screens */
+  }
+}
+
+.wrapper{
+  padding: 20px;
 }

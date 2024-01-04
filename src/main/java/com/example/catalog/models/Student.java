@@ -6,13 +6,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
 @Table(name = "ELEV")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Elev {
+public class Student {
 
     @Id
     @Column(name = "ID")
@@ -30,4 +32,9 @@ public class Elev {
 
     @Column(name="password")
     private String password;
+
+    @OneToMany(targetEntity = Materie.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "materie_fk", referencedColumnName = "id")
+    private List<Materie> courses;
+
 }

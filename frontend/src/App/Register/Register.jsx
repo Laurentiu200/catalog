@@ -56,7 +56,7 @@ export const RegisterComp = (props) =>
                 <label htmlFor={"password"}>Password</label>
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type={"password"}
                        placeholder={"*******"} id={"password"} name={"password"}/>
-                <button type={"submit"} onClick={handleSubmit}>Register</button>
+                <button class="btn btn-primary" type={"submit"} onClick={handleSubmit}>Register</button>
                 {error ? <label color={'red'}>{error}</label> : null}
             </form>
         </div>

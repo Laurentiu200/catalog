@@ -7,8 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    String email;
-    String password;
-    Role role;
+public class Classes {
+    String name;
+    String teacherEmail;
 }
