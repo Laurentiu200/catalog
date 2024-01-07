@@ -16,8 +16,8 @@ const EditStudent = () => {
     const { id } = useParams();
 
     const [student, setStudent] = useState({
-        firstName: "",
-        lastName: "",
+        id: "",
+        grade: "",
         email: "",
         password: "",
     });

@@ -14,6 +14,7 @@ import Search from "../common/Search";
 const StudentsView = () => {
     const [students, setStudents] = useState([]);
     const [search, setSearch] = useState("");
+    const [isPopupOpen, setPopupOpen] = useState(false)
 
     useEffect(() => {
         loadStudents();
@@ -39,6 +40,14 @@ const StudentsView = () => {
         );
         loadStudents();
     };
+
+    const handleOpenPopup = () => {
+        setPopupOpen(true);
+    }
+
+    const handleClosePopup = () => {
+        setPopupOpen(false);
+    }
 
     return (
         <section>
@@ -99,6 +108,7 @@ const StudentsView = () => {
                     ))}
                 </tbody>
             </table>
+
         </section>
     );
 };
