@@ -8,6 +8,7 @@ import com.example.catalog.repository.StudentRepository;
 import com.example.catalog.responses.LoginResponse;
 import com.example.catalog.service.StudentServiceInterface;
 import com.example.catalog.serviceImpl.MaterieService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/materie")
 public class MaterieController {
 
@@ -46,16 +47,17 @@ public class MaterieController {
 
     @PatchMapping(path = "/addStudent")
     @ResponseBody
-    public Student Login(@RequestBody MaterieStudent materie)
+    public LoginResponse Login(@RequestBody MaterieStudent materie)
     {
         return materieService.addStudentsToAClass(materie.getStudentEmail(), materie.getNameMaterie(), materie.getTeacherEmail());
     }
 
-    @PatchMapping(path = "/addGrade")
+    @PatchMapping(path = "/addGrade/{id}/{courseId}/{grade}")
     @ResponseBody
-    public Student addGrade(@RequestParam String email, @RequestBody MaterieNota materieNota)
+    public Student addGrade(@PathVariable Integer id, @PathVariable Integer courseId, @PathVariable Integer grade)
     {
-        return materieService.addGrade(email, materieNota);
+        MaterieNota materieNota = new MaterieNota(courseId, grade);
+        return materieService.addGrade(id, materieNota);
     }
 
     @GetMapping(path = "/getCourses")
@@ -65,24 +67,7 @@ public class MaterieController {
         return studentRepository.findByEmail(email).getCourses();
     }
 
-    @GetMapping(path = "/getCourse")
-    @ResponseBody
-    public Grade getMaterie(@RequestParam String email, @RequestParam Integer courseId, @RequestParam Integer gradeId)
-    {
-        List<Materie> materies = studentRepository.findByEmail(email).getCourses();
-        for (int i = 0; i < materies.size(); i++)
-            if(materies.get(i).getId().equals(courseId))
-            {
-                List<Grade> grades = materies.get(i).getGrades();
-                for (int j = 0; j < grades.size(); j++)
-                {
-                    if(grades.get(j).getId().equals(gradeId))
-                        return grades.get(j);
-                }
-            }
 
-        return null;
-    }
 
     @PatchMapping (path = "/editGrade")
     @ResponseBody

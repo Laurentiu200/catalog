@@ -5,6 +5,7 @@ import {useState} from "react";
 import {BrowserRouter, Redirect, Route, Router, Routes} from 'react-router-dom';
 import {LoginComp} from "./App/Login/Login";
 import {RegisterComp} from "./App/Register/Register";
+import {AddStudentCourse} from "./App/Register/AddStudentCourse";
 import {HomePage} from "./App/HomePage/HomePage";
 import StudentsView from "./component/student/StudentsView";
 import AddGrade from "./component/student/AddGrade";
@@ -12,6 +13,7 @@ import AddStudent from "./component/student/AddStudent";
 import EditStudent from "./component/student/EditStudent";
 import StudentPofile from "./component/student/StudentProfile";
 import Home from "./Home";
+import Materii from "./component/student/Materii";
 
 function App() {
   const[currentForm, setCurrentForm] = useState('login');
@@ -39,8 +41,16 @@ function App() {
               element={<AddStudent />}></Route>
           <Route
               exact
-              path="/add-grade/:id"
+              path="/add-student/course"
+              element={<AddStudentCourse/>}></Route>
+          <Route
+              exact
+              path="/add-grade"
               element={<AddGrade />}></Route>
+          <Route
+              exact
+              path="/courses/:id"
+              element={<Materii />}></Route>
           <Route
               exact
               path="/edit-student/:id"

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @Builder
@@ -21,6 +23,9 @@ public class Grade {
 
     @Column
     private Integer grade;
+
+    @Column
+    private String date;
 
     public Grade(Integer grade) {
         this.grade = grade;

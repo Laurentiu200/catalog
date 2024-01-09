@@ -90,7 +90,7 @@ const StudentsView = () => {
                             </td>
                             <td className="mx-2">
                                 <Link
-                                    to={`/add-grade/${student.id}`}
+                                    to={`/courses/${student.id}`}
                                     className="btn btn-warning">
                                     <FaEdit />
                                 </Link>

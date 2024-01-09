@@ -22,3 +22,15 @@ export const registerUser = async (userData) =>{
         })
 
 }
+
+export const addStudentCourse = async (userData) =>{
+    return await fetch(`${BASE_URL}/materie/addStudent`,
+        {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        })
+
+}

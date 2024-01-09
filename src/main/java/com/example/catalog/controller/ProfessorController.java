@@ -2,9 +2,11 @@ package com.example.catalog.controller;
 
 import com.example.catalog.models.Grade;
 import com.example.catalog.models.Materie;
+import com.example.catalog.models.MaterieNota;
 import com.example.catalog.models.Student;
 import com.example.catalog.repository.StudentRepository;
 import com.example.catalog.service.StudentServiceInterface;
+import com.example.catalog.serviceImpl.MaterieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.sql.In;
@@ -23,6 +25,9 @@ public class ProfessorController {
 
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    MaterieService materieService;
     @GetMapping
     public ResponseEntity<List<Student>> getStudents(){
         return new ResponseEntity<>(studentService.getStudents(), HttpStatus.FOUND);
@@ -50,6 +55,43 @@ public class ProfessorController {
         return studentService.getStudentById(id).getCourses();
     }
 
+
+    @GetMapping(path = "/getCourseName/{id}/{courseId}")
+    @ResponseBody
+    public String getMaterieName(@PathVariable Integer id, @PathVariable Integer courseId)
+    {
+        Student student = studentService.getStudentById(id);
+        List<Materie> materies = student.getCourses();
+        for (int i = 0; i < materies.size(); i++)
+            if(materies.get(i).getId().equals(courseId))
+            {
+                return materies.get(i).getName();
+            }
+
+        return null;
+    }
+
+    @GetMapping(path = "/getCourse/{id}/{courseId}")
+    @ResponseBody
+    public List<Grade> getMaterie(@PathVariable Integer id, @PathVariable Integer courseId)
+    {
+        Student student = studentService.getStudentById(id);
+        List<Materie> materies = student.getCourses();
+        for (int i = 0; i < materies.size(); i++)
+            if(materies.get(i).getId().equals(courseId))
+            {
+                return materies.get(i).getGrades();
+            }
+
+        return null;
+    }
+    @PatchMapping (path = "/addGrade/{id}/{courseId}/{grade}")
+    @ResponseBody
+    public Student addGrade(@PathVariable Integer id, @PathVariable Integer courseId, @PathVariable Integer grade)
+    {
+        MaterieNota materieNota = new MaterieNota(courseId, grade);
+        return materieService.addGrade(id, materieNota);
+    }
     @PatchMapping(path = "/deleteGrade/{studentId}/{courseId}/{gradeId}")
     public void deleteGrade(@PathVariable Integer studentId, @PathVariable Integer courseId, @PathVariable Integer gradeId)
     {

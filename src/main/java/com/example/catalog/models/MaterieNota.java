@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MaterieNota {
-    private String materie;
+    private Integer materie;
     private Integer nota;
 }
