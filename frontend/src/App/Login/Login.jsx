@@ -55,7 +55,7 @@ export const LoginComp = (props) =>
         {
             console.log(json_response)
             console.log("log in success")
-            navigate("/dashboard")
+            navigate("/student-grades/1")
         }
         else
         {

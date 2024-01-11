@@ -16,11 +16,7 @@ const ViewAllCourses = () => {
     const { id } = useParams();
     const [search, setSearch] = useState("");
     const [students, setStudents] = useState([]);
-    const [grade, setGrade] = useState("");
-    const [isPopupOpen, setPopupOpen] = useState(false)
-    const [materieName, setMaterieName] = useState("");
-    const [materieId, setMaterieId] = useState("");
-    const [gradeId, setGradeId] = useState("");
+
 
 
 
@@ -44,21 +40,11 @@ const ViewAllCourses = () => {
 
     return (
         <div>
-
             <section>
-
-                <Search
-                    search={search}
-                    setSearch={setSearch}
-                />
-
                     {students
-                        .filter((st) =>
-                            st.name
-                                .toLowerCase()
-                                .includes(search)
-                        )
                         .map((materie, index) => (
+<div>
+    <h2>{materie.name}</h2>
                             <table className="table table-bordered table-hover shadow">
                                 <thead>
                                 <tr className="text-center">
@@ -70,7 +56,7 @@ const ViewAllCourses = () => {
 
                                 <tbody className="text-center">
                                 {
-                                    materie.map((grade, index) => (
+                                    materie.grades.map((grade, index) => (
                                         <tr key={grade.id}>
                                         <th scope="row" key={index}>
                                                 {index + 1}
@@ -83,13 +69,8 @@ const ViewAllCourses = () => {
                                 }
                                 </tbody>
                             </table>
-
+</div>
                         ))}
-                <Link
-                    to={`/view-students`}
-                    className="btn btn-warning">
-                    Back To Student
-                </Link>
             </section>
         </div>
 

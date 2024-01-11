@@ -42,7 +42,7 @@ function App() {
               element={<AddStudent />}></Route>
           <Route
               exact
-              path="/student-grades"
+              path="/student-grades/:id"
               element={<ViewAllCourses />}></Route>
           <Route
               exact

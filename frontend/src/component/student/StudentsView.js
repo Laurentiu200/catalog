@@ -108,7 +108,11 @@ const StudentsView = () => {
                     ))}
                 </tbody>
             </table>
-
+            <Link
+                to={`/add-student/course`}
+                className="btn btn-warning">
+                ADD COURSE
+            </Link>
         </section>
     );
 };
