@@ -14,6 +14,7 @@ import EditStudent from "./component/student/EditStudent";
 import StudentPofile from "./component/student/StudentProfile";
 import Home from "./Home";
 import Materii from "./component/student/Materii";
+import ViewAllCourses from "./component/student/ViewAllCourses";
 
 function App() {
   const[currentForm, setCurrentForm] = useState('login');
@@ -39,6 +40,10 @@ function App() {
               exact
               path="/add-students"
               element={<AddStudent />}></Route>
+          <Route
+              exact
+              path="/student-grades"
+              element={<ViewAllCourses />}></Route>
           <Route
               exact
               path="/add-student/course"
