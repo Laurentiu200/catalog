@@ -47,17 +47,9 @@ const ViewAllCourses = () => {
 
             <section>
 
-                <Search
-                    search={search}
-                    setSearch={setSearch}
-                />
+
 
                     {students
-                        .filter((st) =>
-                            st.name
-                                .toLowerCase()
-                                .includes(search)
-                        )
                         .map((materie, index) => (
                             <table className="table table-bordered table-hover shadow">
                                 <thead>
@@ -68,9 +60,9 @@ const ViewAllCourses = () => {
                                 </tr>
                                 </thead>
 
-                                <tbody className="text-center">
-                                {
-                                    materie.map((grade, index) => (
+                                <tbody className="text-center">{
+
+                                    materie.grades.map((grade, index) => (
                                         <tr key={grade.id}>
                                         <th scope="row" key={index}>
                                                 {index + 1}
