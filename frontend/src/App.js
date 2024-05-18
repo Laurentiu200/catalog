@@ -15,9 +15,10 @@ import StudentPofile from "./component/student/StudentProfile";
 import Home from "./Home";
 import Materii from "./component/student/Materii";
 import ViewAllCourses from "./component/student/ViewAllCourses";
+import Quiz from "./App/quiz/Quiz";
 
 function App() {
-  const[currentForm, setCurrentForm] = useState('login');
+  const [currentForm, setCurrentForm] = useState('login');
   const toggleForm = (formName) => {
     setCurrentForm(formName)
   }
@@ -27,15 +28,11 @@ function App() {
         <Routes>
           <Route path='/login' element={<LoginComp/>} />
           <Route path='/register' element={<RegisterComp/>} />
-          <Route path='/' element={<HomePage/>} />
+          <Route path='/quiz' element={<Quiz/>} />
           <Route
               exact
               path="/"
               element={<Home />}></Route>
-          <Route
-              exact
-              path="/view-students"
-              element={<StudentsView />}></Route>
           <Route
               exact
               path="/add-students"

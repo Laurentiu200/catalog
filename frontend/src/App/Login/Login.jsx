@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import PropTypes from "prop-types";
 import {json, useNavigate} from 'react-router-dom';
 import {loginUser} from "../api";
-import Select from 'react-select'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Alert, Button } from 'react-bootstrap';
 
 export const LoginComp = (props) =>
 {
@@ -49,13 +49,13 @@ export const LoginComp = (props) =>
         {
             console.log(json_response)
             console.log("log in success")
-            navigate("/view-students")
+            navigate("/quiz")
         }
         else if(json_response.status === "Success" && value === "0")
         {
             console.log(json_response)
             console.log("log in success")
-            navigate("/student-grades/1")
+            navigate("/quiz")
         }
         else
         {
@@ -69,34 +69,29 @@ export const LoginComp = (props) =>
         navigate("/register")
     }
 
-
     return (
-        <div className={"auth-form"}>
-            <h2>Login</h2>
-            <form className={"login-form"} onSubmit={handleSubmit} noValidate={true}>
-                <label htmlFor={"email"}>Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type={"email"}
-                       placeholder={"something@mail.com"} id={"email"} name={"email"}/>
-                <label htmlFor={"password"}>Password</label>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} type={"password"}
-                       placeholder={"*******"} id={"password"} name={"password"}/>
-                <div>
-                    <select value={value} onChange={handleChange}>
-                        <option value="0">Student</option>
-                        <option value="1">Teacher</option>
-                    </select>
-                </div>
-                {error ? <label color={'red'}>{error}</label> : null}
-                <div className="row">
-                    <div className="pull-left">
-                        <button class="btn btn-primary" type={"submit"} onClick={handleSubmit}>Log In</button>
+        <div>
+            <div className={"auth-form"}>
+                <div className="quiz-container">
+                <h2 className={"text-center"}>Login</h2>
+                <form className={"login-form"} onSubmit={handleSubmit} noValidate={true}>
+                    <label htmlFor={"email"} className={"text-lg-start"}>Email</label>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} type={"email"}
+                           placeholder={"youremail@mail.com"} id={"email"} name={"email"}/>
+                    <label htmlFor={"password"}>Password</label>
+                    <input value={pass} onChange={(e) => setPass(e.target.value)} type={"password"} placeholder={"******"}
+                           id={"password"} name={"password"}/>
+                    <div style={{marginTop: '1em'}} className="row">
+                        <div className="col-sm">
+                            <button className="btn btn-success btn-lg" type={"submit"} onClick={handleSubmit}>Sign In</button>
+                        </div>
+                        <div className="col-sm">
+                            <button className="btn btn-primary btn-lg" type={"submit"} onClick={goNext}>Register</button>
+                        </div>
                     </div>
-
-                    <div className="pull-right">
-                        <button class="btn btn-primary" className={"link-btn"} onClick={goNext}>Register now</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            </div>
         </div>
     )
 }

@@ -42,6 +42,7 @@ export const RegisterComp = (props) =>
 
     return (
         <div className={"auth-form"}>
+            <div className="quiz-container">
             <h2>Register</h2>
             <form className={"register-form"} onSubmit={handleSubmit} noValidate={true}>
                 <label htmlFor={"firstName"}>First Name</label>
@@ -59,6 +60,7 @@ export const RegisterComp = (props) =>
                 <button class="btn btn-primary" type={"submit"} onClick={handleSubmit}>Register</button>
                 {error ? <label color={'red'}>{error}</label> : null}
             </form>
+            </div>
         </div>
     )
 }
