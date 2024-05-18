@@ -6,30 +6,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 @Entity
 @Data
 @Builder
-@Table(name = "ELEV")
+@Table(name = "ANSWER")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Answer {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "firstName")
-    private String firstName;
-
-    @Column(name = "lastName")
-    private String lastName;
-
-    @Column(name="email")
-    private String email;
-
-    @Column(name="password")
-    private String password;
+    @Column( name = "name")
+    String answer;
 }

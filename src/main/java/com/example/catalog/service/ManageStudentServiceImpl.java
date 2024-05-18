@@ -2,7 +2,7 @@ package com.example.catalog.service;
 
 import com.example.catalog.models.Student;
 import com.example.catalog.models.User;
-import com.example.catalog.repository.StudentRepository;
+import com.example.catalog.repository.UserRepository;
 import com.example.catalog.responses.LoginResponse;
 import com.example.catalog.serviceImpl.ManageStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Optional;
 public class ManageStudentServiceImpl implements ManageStudentService {
 
     @Autowired
-    StudentRepository elevRepository;
+    UserRepository elevRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;

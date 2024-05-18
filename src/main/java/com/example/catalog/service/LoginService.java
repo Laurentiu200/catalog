@@ -2,9 +2,8 @@ package com.example.catalog.service;
 
 import com.example.catalog.models.Student;
 import com.example.catalog.models.Profesor;
-import com.example.catalog.models.Role;
 import com.example.catalog.models.User;
-import com.example.catalog.repository.StudentRepository;
+import com.example.catalog.repository.UserRepository;
 import com.example.catalog.repository.ProfesorRepository;
 import com.example.catalog.responses.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     @Autowired
-    StudentRepository elevRepository;
+    UserRepository elevRepository;
 
     @Autowired
     ProfesorRepository profesorRepository;
@@ -24,7 +23,6 @@ public class LoginService {
     PasswordEncoder passwordEncoder;
 
     public LoginResponse login(User user) {
-        if (user.getRole().equals(Role.STUDENT)) {
             Student student = elevRepository.findByEmail(user.getEmail());
 
             if (student != null) {
@@ -34,19 +32,6 @@ public class LoginService {
                 return new LoginResponse("Invalid", "Invalid password!");
             }
             return new LoginResponse("Invalid", "Invalid email!");
-        }
-        else
-        {
-            Profesor profesor = profesorRepository.findByEmail(user.getEmail());
-
-            if (profesor != null) {
-                if (passwordEncoder.matches(user.getPassword(), profesor.getPassword())) {
-                    return new LoginResponse("Success", "Authentication success!");
-                }
-                return new LoginResponse("Invalid", "Invalid password!");
-            }
-            return new LoginResponse("Invalid", "Invalid email!");
-        }
     }
 
 
