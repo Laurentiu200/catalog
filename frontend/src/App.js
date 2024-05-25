@@ -16,6 +16,9 @@ import Home from "./Home";
 import Materii from "./component/student/Materii";
 import ViewAllCourses from "./component/student/ViewAllCourses";
 import Quiz from "./App/quiz/Quiz";
+import ResponsiveBoxes from "./App/MainPageQuiz/MainQuiz";
+import MainPage from "./App/MainPage/MainPage";
+import LearningPage from "./App/LearningPage/LearningPage";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -28,19 +31,16 @@ function App() {
         <Routes>
           <Route path='/login' element={<LoginComp/>} />
           <Route path='/register' element={<RegisterComp/>} />
-          <Route path='/quiz' element={<Quiz/>} />
+          <Route path='/quiz/:id' element={<Quiz/>} />
           <Route
-              exact
+              path="/quiz"
+              element={<ResponsiveBoxes />}></Route>
+          <Route
               path="/"
-              element={<Home />}></Route>
+              element={<MainPage />}></Route>
           <Route
-              exact
-              path="/add-students"
-              element={<AddStudent />}></Route>
-          <Route
-              exact
-              path="/student-grades/:id"
-              element={<ViewAllCourses />}></Route>
+              path="/learning"
+              element={<LearningPage />}></Route>
           <Route
               exact
               path="/add-student/course"

@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './quiz.css';
+import {Link, useParams} from "react-router-dom";
+import {Button} from "react-bootstrap";
 
 const Quiz = () => {
+    const { id } = useParams();
     const [activeQuestion, setActiveQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [showResult, setShowResult] = useState(false);
@@ -21,7 +24,7 @@ const Quiz = () => {
 
     const loadQuiz = async () => {
         try {
-            const result = await axios.get('http://localhost:8080/quiz/getQuiz/1');
+            const result = await axios.get(`http://localhost:8080/quiz/getQuiz/${id}`);
             setQuestions(result.data.questions);
         } catch (error) {
             console.error('Error fetching quiz data:', error);
@@ -99,6 +102,10 @@ const Quiz = () => {
                     <p>
                         Wrong Answers: <span>{results.wrongAnswers}</span>
                     </p>
+
+                    <Link to={`/`} >
+                        <Button>Back</Button>
+                    </Link>
                 </div>
             )}
         </div>

@@ -21,6 +21,9 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(targetEntity = Question.class, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "questions", referencedColumnName = "id")
     private List<Question> questions;

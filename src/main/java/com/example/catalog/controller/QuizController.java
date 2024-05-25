@@ -1,10 +1,12 @@
 package com.example.catalog.controller;
 
 import com.example.catalog.models.Quiz;
+import com.example.catalog.models.QuizType;
 import com.example.catalog.service.QuizService;
-import com.example.catalog.serviceImpl.QuizServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -21,5 +23,14 @@ public class QuizController {
         Quiz quiz = quizService.getQuiz(id);
         return quiz;
     }
+
+
+    @GetMapping(path = "/getQuizAll")
+    @ResponseBody
+    public List<QuizType> getQuizAll()
+    {
+        return quizService.getAll();
+    }
+
 
 }

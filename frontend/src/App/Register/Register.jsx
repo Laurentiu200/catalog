@@ -37,29 +37,36 @@ export const RegisterComp = (props) =>
             setError(json_response['message'])
         }
 
-    }
 
+
+    }
+    const goNext = (e) => {
+        navigate("/login")
+    }
 
     return (
         <div className={"auth-form"}>
             <div className="quiz-container">
             <h2>Register</h2>
-            <form className={"register-form"} onSubmit={handleSubmit} noValidate={true}>
-                <label htmlFor={"firstName"}>First Name</label>
-                <input value={fName} onChange={(e) => setFName(e.target.value)}
-                       placeholder={"First"} id={"firstName"} name={"firstName"}/>
-                <label htmlFor={"lastName"}>Last Name</label>
-                <input value={lName} onChange={(e) => setLName(e.target.value)}
-                       placeholder={"Last"} id={"lastName"} name={"lastName"}/>
-                <label htmlFor={"email"}>Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type={"email"}
-                       placeholder={"something@mail.com"} id={"email"} name={"email"}/>
-                <label htmlFor={"password"}>Password</label>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} type={"password"}
-                       placeholder={"*******"} id={"password"} name={"password"}/>
-                <button class="btn btn-primary" type={"submit"} onClick={handleSubmit}>Register</button>
-                {error ? <label color={'red'}>{error}</label> : null}
-            </form>
+                <form className={"register-form"} onSubmit={handleSubmit} noValidate={true}>
+                    <label htmlFor={"firstName"}>First Name</label>
+                    <input value={fName} onChange={(e) => setFName(e.target.value)}
+                           placeholder={"First"} id={"firstName"} name={"firstName"}/>
+                    <label htmlFor={"lastName"}>Last Name</label>
+                    <input value={lName} onChange={(e) => setLName(e.target.value)}
+                           placeholder={"Last"} id={"lastName"} name={"lastName"}/>
+                    <label htmlFor={"email"}>Email</label>
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} type={"email"}
+                           placeholder={"something@mail.com"} id={"email"} name={"email"}/>
+                    <label htmlFor={"password"}>Password</label>
+                    <input value={pass} onChange={(e) => setPass(e.target.value)} type={"password"}
+                           placeholder={"*******"} id={"password"} name={"password"}/>
+                    <button class="btn btn-primary" type={"submit"} onClick={handleSubmit}>Register</button>
+                    {error ? <label color={'red'}>{error}</label> : null}
+                    <div className="col-sm">
+                        <button className="btn btn-primary btn-lg" type={"submit"} onClick={goNext}>Sign In</button>
+                    </div>
+                </form>
             </div>
         </div>
     )
