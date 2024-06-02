@@ -19,6 +19,11 @@ import Quiz from "./App/quiz/Quiz";
 import ResponsiveBoxes from "./App/MainPageQuiz/MainQuiz";
 import MainPage from "./App/MainPage/MainPage";
 import LearningPage from "./App/LearningPage/LearningPage";
+import Pressure from "./App/Computation/Pressure";
+import Density from "./App/Computation/Density";
+import Momentum from "./App/Computation/Momentum";
+import Computations from "./App/ComputationsPage/Computations";
+import LeaderBoard from "./App/LeaderBoard";
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -31,15 +36,15 @@ function App() {
         <Routes>
           <Route path='/login' element={<LoginComp/>} />
           <Route path='/register' element={<RegisterComp/>} />
-          <Route path='/quiz/:id' element={<Quiz/>} />
+          <Route path='/quiz/:id/:userId' element={<Quiz/>} />
           <Route
-              path="/quiz"
+              path="/quizMain/:id"
               element={<ResponsiveBoxes />}></Route>
           <Route
-              path="/"
+              path="/:id"
               element={<MainPage />}></Route>
           <Route
-              path="/learning"
+              path="/learning/:id"
               element={<LearningPage />}></Route>
           <Route
               exact
@@ -47,12 +52,24 @@ function App() {
               element={<AddStudentCourse/>}></Route>
           <Route
               exact
-              path="/add-grade"
-              element={<AddGrade />}></Route>
+              path="/pressure/:id"
+              element={<Pressure />}></Route>
           <Route
               exact
-              path="/courses/:id"
-              element={<Materii />}></Route>
+              path="/density/:id"
+              element={<Density />}></Route>
+          <Route
+              exact
+              path="/momentum/:id"
+              element={<Momentum />}></Route>
+          <Route
+              exact
+              path="/computations/:id"
+              element={<Computations />}></Route>
+          <Route
+              exact
+              path="/leadearBoard/:id"
+              element={<LeaderBoard />}></Route>
           <Route
               exact
               path="/edit-student/:id"

@@ -32,4 +32,16 @@ public class Student {
 
     @Column(name="password")
     private String password;
+
+    @Column(name = "result")
+    private Integer result;
+
+    @ElementCollection
+    @Column(name = "quizRezolvat")
+    private List<Integer> quiuri;
+
+    public void addQuiz(Integer id)
+    {
+        this.quiuri.add(id);
+    }
 }

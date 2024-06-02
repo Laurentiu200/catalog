@@ -25,16 +25,12 @@ export const RegisterComp = (props) =>
         const loginResponse = await registerUser(formData)
         const json_response = await loginResponse.json()
         console.log(json_response.status)
-        if(json_response.status === true)
+        if(json_response.status === "Success")
         {
+            navigate("/login")
             console.log(json_response)
             console.log("Register success!")
-            navigate("/dashboard")
-        }
-        else
-        {
-            console.log("Register failed")
-            setError(json_response['message'])
+
         }
 
 

@@ -13,4 +13,5 @@ public class LoginResponse {
 
     String status;
     String message;
+    Integer id;
 }

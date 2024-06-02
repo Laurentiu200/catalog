@@ -21,6 +21,7 @@ public class LoginController {
         return response;
     }
 
+
     @PostMapping(path = "/addStudent")
     public LoginResponse Login(@RequestBody Student student)
     {
@@ -28,10 +29,5 @@ public class LoginController {
         return response;
     }
 
-    @PostMapping(path = "/addProfessor")
-    public LoginResponse Login(@RequestBody Profesor profesor)
-    {
-        LoginResponse response = loginService.saveProfessor(profesor);
-        return response;
-    }
+
 }

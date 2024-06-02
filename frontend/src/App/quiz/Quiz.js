@@ -6,6 +6,7 @@ import {Button} from "react-bootstrap";
 
 const Quiz = () => {
     const { id } = useParams();
+    const { userId } = useParams();
     const [activeQuestion, setActiveQuestion] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [showResult, setShowResult] = useState(false);
@@ -15,6 +16,7 @@ const Quiz = () => {
         correctAnswers: 0,
         wrongAnswers: 0,
     });
+
 
     const [questions, setQuestions] = useState([]);
 
@@ -31,7 +33,9 @@ const Quiz = () => {
         }
     };
 
-    const onClickNext = () => {
+
+
+    const onClickNext = async () => {
         setSelectedAnswerIndex(null);
         setResult((prev) =>
             selectedAnswer
@@ -40,13 +44,16 @@ const Quiz = () => {
                     score: prev.score + 5,
                     correctAnswers: prev.correctAnswers + 1,
                 }
-                : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
+                : {...prev, wrongAnswers: prev.wrongAnswers + 1}
         );
 
         if (activeQuestion !== questions.length - 1) {
             setActiveQuestion((prev) => prev + 1);
         } else {
+
             setShowResult(true);
+
+            await axios.post(`http://localhost:8080/quiz/addPoints/${userId.substring(3)}/${results.score}/${id}`);
         }
     };
 
@@ -103,7 +110,7 @@ const Quiz = () => {
                         Wrong Answers: <span>{results.wrongAnswers}</span>
                     </p>
 
-                    <Link to={`/`} >
+                    <Link to={`/${id}`} >
                         <Button>Back</Button>
                     </Link>
                 </div>

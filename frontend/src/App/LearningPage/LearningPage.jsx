@@ -1,8 +1,9 @@
 import React from 'react';
 import './learning.css';
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {Button} from "react-bootstrap";
 const LearningPage = () => {
+    const { id } = useParams();
     const content = [
         {
             text: "This is a sample text for the learning page. It's a great place to put some informative content.",
@@ -34,7 +35,7 @@ const LearningPage = () => {
                 ))}
             </div>
             <div style={{marginTop: 50}}>
-            <Link to={`/`} >
+            <Link to={`/${id}`} >
                 <Button>Home Page</Button>
             </Link>
             </div>

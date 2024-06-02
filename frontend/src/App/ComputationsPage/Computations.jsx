@@ -52,45 +52,35 @@ const Button = styled.button`
   }
 `;
 
-const MainPage = () => {
-
+const Computations = () => {
     const { id } = useParams();
-
-
     return (
         <DIV>
-            <h2>DASHBOARD</h2>
+            <h2>Computations</h2>
             <Container>
-                    <Box>
-                        <Title>Do Quiz</Title>
-                        <Link to={`/quizMain/${id}`} >
-                            <Button>Start</Button>
-                        </Link>
-                    </Box>
-
                 <Box>
-                    <Title>Learn Something</Title>
-                    <Link to={`/learning/${id}`} >
-                        <Button>Start</Button>
-                    </Link>
-                </Box>
-
-                <Box>
-                    <Title>Leader Board</Title>
-                    <Link to={`/leadearBoard/${id}`} >
+                    <Title>Pressure</Title>
+                    <Link to={`/pressure/${id}`} >
                         <Button>GO</Button>
                     </Link>
                 </Box>
 
                 <Box>
-                    <Title>Computations</Title>
-                    <Link to={`/computations/${id}`} >
+                    <Title>Density</Title>
+                    <Link to={`/density/${id}`} >
                         <Button>GO</Button>
                     </Link>
                 </Box>
 
-                <Link to={`/login`} >
-                    <Button>LogOut</Button>
+                <Box>
+                    <Title>Momentum</Title>
+                    <Link to={`/momentum/${id}`} >
+                        <Button>GO</Button>
+                    </Link>
+                </Box>
+
+                <Link to={`/${id}`} >
+                    <Button>Home</Button>
                 </Link>
 
             </Container>
@@ -98,4 +88,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default Computations;

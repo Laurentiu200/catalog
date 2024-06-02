@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {json, useNavigate} from 'react-router-dom';
-import {loginUser} from "../api";
+import {getId, loginUser} from "../api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Alert, Button } from 'react-bootstrap';
+import axios from "axios";
 
 export const LoginComp = (props) =>
 {
@@ -48,14 +49,16 @@ export const LoginComp = (props) =>
         if(json_response.status === "Success" && value === "1")
         {
             console.log(json_response)
-            console.log("log in success")
-            navigate("/quiz")
+            console.log("log1 in success")
+
+            navigate(`/id=${json_response.id}`)
         }
         else if(json_response.status === "Success" && value === "0")
         {
             console.log(json_response)
             console.log("log in success")
-            navigate("/quiz")
+
+            navigate(`/id=${json_response.id}`)
         }
         else
         {

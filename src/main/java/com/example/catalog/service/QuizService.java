@@ -10,6 +10,7 @@ public interface QuizService {
 
      Quiz getQuiz(int id);
 
-     List<QuizType> getAll();
+     List<QuizType> getAll(Integer userId);
 
+     void addPoints(Integer userId, Integer points, Integer quizId);
 }

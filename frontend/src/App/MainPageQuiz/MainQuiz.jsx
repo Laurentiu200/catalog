@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import axios from 'axios';
 
 const Container = styled.div`
@@ -56,6 +56,7 @@ const Button = styled.button`
 
 
 const ResponsiveBoxes = () => {
+    const { id } = useParams();
     const [listQuiz, setQuiz] = useState([]);
 
     useEffect(() => {
@@ -64,7 +65,8 @@ const ResponsiveBoxes = () => {
 
     const loadQuiz = async () => {
         try {
-            const result = await axios.get(`http://localhost:8080/quiz/getQuizAll`);
+            console.log(id)
+            const result = await axios.get(`http://localhost:8080/quiz/getQuizAll/${id.substring(3)}`);
             setQuiz(result.data);
         } catch (error) {
             console.error('Error fetching quiz data:', error);
@@ -78,12 +80,17 @@ const ResponsiveBoxes = () => {
             {listQuiz.map((quiz) => (
                 <Box key={quiz.id}>
                     <Title>{quiz.name}</Title>
-                    <Link to={`/quiz/${quiz.id}`} >
+                    <Link to={`/quiz/${quiz.id}/${id}`} >
                         <Button>Start Quiz</Button>
                     </Link>
                 </Box>
             ))}
         </Container>
+    <DIV>
+        <Link to={`/${id}`} >
+            <Button>Home Page</Button>
+        </Link>
+    </DIV>
 </DIV>
     );
 };
